@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en" data-theme="dark" data-condition="clear-night">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+    <meta name="description" content="ATMOS — Live Planetary Weather Telemetry. Atmospheric gradients, real-time meteorological instrumentation, and multi-day planetary forecasts." />
+    <meta name="keywords" content="weather telemetry, live weather, atmospheric monitoring, planetary weather, forecast, climate, barometric pressure, wind vectors" />
+    <meta name="theme-color" content="#090d16" />
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    
+    <!-- Google Fonts: Outfit (Display), Inter (Interface), JetBrains Mono (Scientific Telemetry) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+    <title>ATMOS — Live Planetary Weather Telemetry</title>
+  </head>
+  <body>
+    <!-- 60FPS Atmospheric Visual Particle Layer -->
+    <canvas id="atmospheric-canvas" aria-hidden="true"></canvas>
+
+    <!-- Main Application Mounting Container -->
+    <div id="app"></div>
+
+    <!-- Application Script Entrypoint -->
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

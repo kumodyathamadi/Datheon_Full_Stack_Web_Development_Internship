@@ -1,0 +1,191 @@
+/* ==========================================================================
+   ATMOS — Weather Telemetry Design Tokens & Variables
+   ========================================================================== */
+
+:root {
+  /* Typography */
+  --font-display: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', 'SF Mono', Consolas, Menlo, monospace;
+
+  /* Font Weights */
+  --fw-light: 300;
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+  --fw-bold: 700;
+  --fw-heavy: 800;
+
+  /* Spacing Scale */
+  --space-2xs: 0.25rem;
+  --space-xs: 0.5rem;
+  --space-sm: 0.75rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+  --space-3xl: 4.5rem;
+
+  /* Border Radii */
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --radius-full: 9999px;
+
+  /* Elevation & Shadows */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.15);
+  --shadow-md: 0 8px 24px -4px rgba(0, 0, 0, 0.25);
+  --shadow-lg: 0 16px 40px -8px rgba(0, 0, 0, 0.35);
+  --shadow-glow: 0 0 35px -5px var(--theme-accent-glow);
+
+  /* Transitions */
+  --transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-smooth: 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-theme: 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+
+  /* Glass Surface Tokens (Dark Default) */
+  --surface-glass-subtle: rgba(255, 255, 255, 0.03);
+  --surface-glass: rgba(18, 24, 38, 0.55);
+  --surface-glass-card: rgba(18, 24, 38, 0.65);
+  --surface-glass-elevated: rgba(30, 41, 59, 0.75);
+  --surface-border: rgba(255, 255, 255, 0.09);
+  --surface-border-hover: rgba(255, 255, 255, 0.18);
+  --surface-highlight: rgba(255, 255, 255, 0.15);
+  --backdrop-blur: blur(24px) saturate(180%);
+
+  /* Base Text Colors */
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --text-tertiary: #64748b;
+  --text-muted: #475569;
+  --text-inverse: #0f172a;
+
+  /* Primary Palette (Dynamic Weather Base: Clear/Night Default) */
+  --theme-bg-gradient: radial-gradient(circle at 50% 0%, #1e1b4b 0%, #090d16 60%, #020617 100%);
+  --theme-accent: #38bdf8;
+  --theme-accent-secondary: #818cf8;
+  --theme-accent-glow: rgba(56, 189, 248, 0.25);
+  --theme-status-tag: rgba(56, 189, 248, 0.15);
+}
+
+/* Light Mode Overrides */
+[data-theme="light"] {
+  --surface-glass-subtle: rgba(255, 255, 255, 0.5);
+  --surface-glass: rgba(255, 255, 255, 0.65);
+  --surface-glass-card: rgba(255, 255, 255, 0.75);
+  --surface-glass-elevated: rgba(255, 255, 255, 0.9);
+  --surface-border: rgba(15, 23, 42, 0.08);
+  --surface-border-hover: rgba(15, 23, 42, 0.16);
+  --surface-highlight: rgba(255, 255, 255, 0.6);
+  --backdrop-blur: blur(20px) saturate(150%);
+
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-tertiary: #64748b;
+  --text-muted: #94a3b8;
+  --text-inverse: #ffffff;
+
+  --shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.06);
+  --shadow-md: 0 8px 24px -4px rgba(15, 23, 42, 0.1);
+  --shadow-lg: 0 16px 40px -8px rgba(15, 23, 42, 0.15);
+}
+
+/* ==========================================================================
+   Weather Condition Dynamic Atmospheric Palettes
+   ========================================================================== */
+
+/* 1. Sunny / Clear Day */
+[data-condition="clear-day"] {
+  --theme-bg-gradient: radial-gradient(circle at 65% -10%, #fb923c 0%, #f59e0b 20%, #0f172a 75%, #080d1a 100%);
+  --theme-accent: #fbbf24;
+  --theme-accent-secondary: #f97316;
+  --theme-accent-glow: rgba(251, 191, 36, 0.3);
+  --theme-status-tag: rgba(251, 191, 36, 0.15);
+}
+[data-theme="light"][data-condition="clear-day"] {
+  --theme-bg-gradient: radial-gradient(circle at 65% -10%, #fef3c7 0%, #fde68a 25%, #e0f2fe 70%, #f8fafc 100%);
+  --theme-accent: #d97706;
+  --theme-accent-secondary: #ea580c;
+  --theme-accent-glow: rgba(217, 119, 6, 0.2);
+}
+
+/* 2. Clear Night */
+[data-condition="clear-night"] {
+  --theme-bg-gradient: radial-gradient(circle at 50% 0%, #1e1b4b 0%, #0f172a 45%, #020617 100%);
+  --theme-accent: #818cf8;
+  --theme-accent-secondary: #38bdf8;
+  --theme-accent-glow: rgba(129, 140, 248, 0.3);
+  --theme-status-tag: rgba(129, 140, 248, 0.15);
+}
+[data-theme="light"][data-condition="clear-night"] {
+  --theme-bg-gradient: radial-gradient(circle at 50% 0%, #e0e7ff 0%, #c7d2fe 30%, #f1f5f9 85%, #f8fafc 100%);
+  --theme-accent: #4f46e5;
+  --theme-accent-secondary: #0284c7;
+  --theme-accent-glow: rgba(79, 70, 229, 0.15);
+}
+
+/* 3. Rainy / Drizzle */
+[data-condition="rain"] {
+  --theme-bg-gradient: radial-gradient(circle at 40% -10%, #0e7490 0%, #0f172a 45%, #050b14 100%);
+  --theme-accent: #38bdf8;
+  --theme-accent-secondary: #06b6d4;
+  --theme-accent-glow: rgba(56, 189, 248, 0.28);
+  --theme-status-tag: rgba(6, 182, 212, 0.15);
+}
+[data-theme="light"][data-condition="rain"] {
+  --theme-bg-gradient: radial-gradient(circle at 40% -10%, #cffafe 0%, #bae6fd 35%, #e2e8f0 80%, #f8fafc 100%);
+  --theme-accent: #0284c7;
+  --theme-accent-secondary: #0891b2;
+  --theme-accent-glow: rgba(2, 132, 199, 0.18);
+}
+
+/* 4. Cloudy / Overcast */
+[data-condition="clouds"] {
+  --theme-bg-gradient: radial-gradient(circle at 50% -10%, #475569 0%, #1e293b 45%, #0b1120 100%);
+  --theme-accent: #94a3b8;
+  --theme-accent-secondary: #a78bfa;
+  --theme-accent-glow: rgba(148, 163, 184, 0.25);
+  --theme-status-tag: rgba(148, 163, 184, 0.15);
+}
+[data-theme="light"][data-condition="clouds"] {
+  --theme-bg-gradient: radial-gradient(circle at 50% -10%, #e2e8f0 0%, #cbd5e1 35%, #f1f5f9 80%, #ffffff 100%);
+  --theme-accent: #475569;
+  --theme-accent-secondary: #7c3aed;
+  --theme-accent-glow: rgba(71, 85, 105, 0.15);
+}
+
+/* 5. Snow */
+[data-condition="snow"] {
+  --theme-bg-gradient: radial-gradient(circle at 50% -10%, #0369a1 0%, #1e1b4b 40%, #080c18 100%);
+  --theme-accent: #bae6fd;
+  --theme-accent-secondary: #c084fc;
+  --theme-accent-glow: rgba(186, 230, 253, 0.35);
+  --theme-status-tag: rgba(186, 230, 253, 0.18);
+}
+[data-theme="light"][data-condition="snow"] {
+  --theme-bg-gradient: radial-gradient(circle at 50% -10%, #f0f9ff 0%, #e0f2fe 35%, #f3e8ff 75%, #ffffff 100%);
+  --theme-accent: #0284c7;
+  --theme-accent-secondary: #9333ea;
+  --theme-accent-glow: rgba(2, 132, 199, 0.2);
+}
+
+/* 6. Thunderstorm */
+[data-condition="thunderstorm"] {
+  --theme-bg-gradient: radial-gradient(circle at 50% -10%, #581c87 0%, #1e1b4b 35%, #050510 100%);
+  --theme-accent: #c084fc;
+  --theme-accent-secondary: #38bdf8;
+  --theme-accent-glow: rgba(192, 132, 252, 0.4);
+  --theme-status-tag: rgba(192, 132, 252, 0.2);
+}
+
+/* 7. Atmosphere (Mist / Fog / Haze) */
+[data-condition="atmosphere"] {
+  --theme-bg-gradient: radial-gradient(circle at 50% -10%, #334155 0%, #1e293b 40%, #0a0f1d 100%);
+  --theme-accent: #cbd5e1;
+  --theme-accent-secondary: #67e8f9;
+  --theme-accent-glow: rgba(203, 213, 225, 0.25);
+  --theme-status-tag: rgba(203, 213, 225, 0.15);
+}

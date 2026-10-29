@@ -1,0 +1,292 @@
+/* ==========================================================================
+   ATMOS — Cinematic Current-Weather Hero
+   ========================================================================== */
+
+.weather-hero {
+  padding: var(--space-2xl) var(--space-2xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(145deg, var(--surface-glass-card), var(--surface-glass-subtle));
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg), var(--shadow-glow);
+}
+
+/* Atmospheric Ambient Glow Backdrop within Hero */
+.hero-ambient-glow {
+  position: absolute;
+  top: -20%;
+  right: -10%;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--theme-accent-glow) 0%, transparent 70%);
+  filter: blur(60px);
+  pointer-events: none;
+  opacity: 0.85;
+  transition: all var(--transition-theme);
+}
+
+/* Telemetry Header Line */
+.hero-telemetry-strip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  border-bottom: 1px solid var(--surface-border);
+  padding-bottom: var(--space-md);
+  position: relative;
+  z-index: 2;
+}
+
+.station-coords {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-tertiary);
+  letter-spacing: 0.05em;
+}
+
+.live-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #10b981;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.live-indicator::before {
+  content: '';
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #10b981;
+  box-shadow: 0 0 10px #10b981;
+  animation: pulse-live 2s infinite ease-in-out;
+}
+
+@keyframes pulse-live {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.85); }
+}
+
+.station-time {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+/* Hero Main Display Layout */
+.hero-main-content {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  align-items: center;
+  gap: var(--space-2xl);
+  position: relative;
+  z-index: 2;
+}
+
+/* Primary Information Column */
+.hero-primary {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.location-group {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.location-city-title {
+  font-family: var(--font-display);
+  font-size: 2.75rem;
+  font-weight: var(--fw-bold);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-sm);
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.location-country-tag {
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  font-weight: var(--fw-semibold);
+  letter-spacing: 0.08em;
+  color: var(--theme-accent);
+  background: var(--theme-status-tag);
+  padding: 0.2rem 0.6rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--theme-accent);
+}
+
+.local-date-display {
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  color: var(--text-secondary);
+  font-weight: var(--fw-regular);
+}
+
+/* Massive Temperature Showcase */
+.temp-showcase-row {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-md);
+  margin: var(--space-sm) 0;
+}
+
+.oversized-temp {
+  font-family: var(--font-display);
+  font-size: clamp(5rem, 11vw, 9.5rem);
+  font-weight: var(--fw-heavy);
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+  color: var(--text-primary);
+  background: linear-gradient(180deg, var(--text-primary) 40%, rgba(255, 255, 255, 0.7) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-flex;
+  align-items: flex-start;
+  user-select: none;
+}
+
+[data-theme="light"] .oversized-temp {
+  background: linear-gradient(180deg, var(--text-primary) 60%, var(--text-secondary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.temp-unit-symbol {
+  font-size: 0.45em;
+  font-weight: var(--fw-light);
+  color: var(--theme-accent);
+  -webkit-text-fill-color: var(--theme-accent);
+  margin-top: 0.1em;
+  margin-left: 2px;
+}
+
+/* Weather Description & Feels-like */
+.condition-details-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.condition-headline {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: var(--fw-medium);
+  letter-spacing: -0.01em;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.temp-extremes-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-lg);
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
+.temp-extreme-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2xs);
+}
+
+.temp-extreme-item strong {
+  color: var(--text-primary);
+  font-weight: var(--fw-semibold);
+}
+
+/* Visual Illustration Column */
+.hero-visual-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.hero-weather-illustration {
+  width: 220px;
+  height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  filter: drop-shadow(0 15px 30px var(--theme-accent-glow));
+  position: relative;
+  transition: transform var(--transition-smooth);
+}
+
+.hero-weather-illustration:hover {
+  transform: scale(1.05);
+}
+
+.hero-weather-illustration svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Ephemeris Strip: Sunrise / Sunset */
+.hero-ephemeris-strip {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background: var(--surface-glass-subtle);
+  border: 1px solid var(--surface-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-sm) var(--space-md);
+  margin-top: var(--space-sm);
+  width: 100%;
+  max-width: 320px;
+}
+
+.ephemeris-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+.ephemeris-icon {
+  color: var(--theme-accent);
+}
+
+.ephemeris-meta {
+  display: flex;
+  flex-direction: column;
+}
+
+.ephemeris-label {
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+}
+
+.ephemeris-time {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  font-weight: var(--fw-semibold);
+  color: var(--text-primary);
+}
